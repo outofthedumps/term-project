@@ -54,23 +54,36 @@
 }
 
 
-.icon-link{
+.icon-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     color: black;
+    flex-shrink: 0;
 }
 
-.icon-link .icon{
-    font-size: 26px;
+.icon-link .icon {
+    display: block;
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
 }
+
 
 .icon-link:hover {
     color: darkgreen;
 }
+/* home page */
+.featured-items{
+    display: flex;
 
+}
 
+.home-graphic{
+    width: 30px;
+    height: auto;
+}
 
 
 

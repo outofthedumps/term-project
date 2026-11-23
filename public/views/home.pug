@@ -1,6 +1,23 @@
-
 extends layout
 
 block content
-  h1 Welcome to My Website!
-  p This is the homepage.
+  -
+    const itemsToShow =
+      typeof featuredItems !== "undefined"
+        ? featuredItems
+        : [
+            { name: "Featured item" },
+            { name: "Featured item" },
+            { name: "Featured item" }
+          ];
+
+  section.home-graphic(aria-label="History Showroom graphic")
+    img(
+      src="/images/Washington-home-graphic.png"
+      alt="History Showroom logo featuring George Washington as a historical relic dealer"
+    )
+
+  section.featured-items(aria-label="Featured items")
+    each item in itemsToShow
+      article.featured-item
+        h2= item.name

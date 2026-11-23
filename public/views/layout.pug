@@ -1,10 +1,10 @@
-
-doctype html 
-
-html(lang="eng")
+doctype html
+html(lang="en")
   head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title History Showroom
-    link(rel="stylesheet" href="css/style.css")
+    link(rel="stylesheet" href="/css/style.css")
 
   body
     include partials/navbar.pug
@@ -14,3 +14,6 @@ html(lang="eng")
 
     footer
       include partials/footer.pug
+
+    if devReload
+      script(src="/__dev/reload.js" data-reload-version=reloadVersion defer)
