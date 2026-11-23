@@ -12,5 +12,8 @@
   "type": "commonjs",
   "dependencies": {
     "pug": "^3.0.4"
+  },
+  "devDependencies": {
+    "pug-cli": "^1.0.0-alpha6"
   }
 }
