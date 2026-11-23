@@ -1,6 +1,44 @@
-
 extends layout
 
 block content
-  h1 About Us
-  p We sell historical relics from US history.
+  article.about-page
+    header.about-hero
+      .about-container
+        h1.about-title
+          | Own a piece
+          br
+          | of the U.S. History.
+        p.about-tagline Fake relics. Real political baggage.
+
+    .about-container.about-content
+      section.about-intro(aria-labelledby="about-intro-heading")
+        .about-story
+          h2#about-intro-heading.about-eyebrow About the Showroom
+
+          p.about-lead History Showroom turns the objects behind America's most ridiculous political moments into fictional collectibles.
+
+          p The laptop. The birth certificate. The ordinary object that somehow got its own news cycle. Think souvenirs from the stories you couldn't escape.
+
+        p.about-stamp
+          span National
+          strong Distraction
+
+      section.about-standards(aria-labelledby="about-standards-heading")
+        h2#about-standards-heading The Collection
+
+        dl.about-principles
+          dt The inspiration
+          dd Political spectacles, public meltdowns, and headlines that refused to die.
+
+          dt The merchandise
+          dd Made-up collectibles with unnecessarily detailed backstories.
+
+          dt The appeal
+          dd You had to hear about it. You might as well get a souvenir.
+
+      section.about-team(aria-labelledby="about-team-heading")
+        h2#about-team-heading Behind the Showroom
+
+        p History Showroom was created as a student web development project.
+
+        

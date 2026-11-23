@@ -1,0 +1,30 @@
+extends ../profile
+
+block profileContent
+  section.profile-section.profile-panel(
+    aria-labelledby="profile-cards-heading"
+  )
+    a.profile-back(href="/profile") ← Back to profile
+
+    h2#profile-cards-heading Saved cards
+
+    if savedCards.length
+      ul.profile-list
+        each card in savedCards
+          li.profile-saved-card
+            div
+              h3.profile-item-name= card.brand
+              p.profile-meta Expiration: #{card.expiryLabel}
+
+            p.profile-card-number Ending in #{card.last4}
+
+    else
+      p.profile-empty Your saved cards will appear here.
+
+    p#profile-cards-note.profile-muted Card management is not available yet.
+
+    button.profile-button(
+      type="button"
+      disabled
+      aria-describedby="profile-cards-note"
+    ) Add card

@@ -1,0 +1,46 @@
+
+extends ../profile
+
+block profileContent
+  section.profile-section.profile-panel(
+    aria-labelledby="profile-settings-heading"
+  )
+    a.profile-back(href="/profile") ← Back to profile
+
+    h2#profile-settings-heading Settings
+
+    
+
+    form.profile-form(
+      action="/profile/settings"
+      method="post"
+      enctype="multipart/form-data"
+      aria-describedby="profile-settings-note"
+    )
+      .profile-field
+        label(for="profile-username") Username
+
+        input#profile-username(
+          type="text"
+          name="username"
+          value=profileUser.username
+          autocomplete="username"
+          placeholder="Choose a username"
+          required
+        )
+
+      .profile-field
+        label(for="profile-image") Profile image
+
+        input#profile-image(
+          type="file"
+          name="avatar"
+          accept="image/png,image/jpeg,image/webp"
+        )
+
+        small.profile-help Choose a PNG, JPG, or WebP image.
+
+      button.profile-button(
+        type="submit"
+        disabled
+      ) Save changes

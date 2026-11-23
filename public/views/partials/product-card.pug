@@ -1,0 +1,38 @@
+mixin productCard(item)
+  - const hasPrice = typeof item.price === "number" && Number.isFinite(item.price)
+
+  article.product-card
+    .product-card-media
+      if item.imageUrl
+        img.product-card-image(
+          src=item.imageUrl
+          alt=item.imageAlt || item.name
+          loading="lazy"
+          decoding="async"
+        )
+      else
+        .product-card-placeholder(aria-hidden="true") Image coming soon
+
+      if item.badge
+        span.product-card-badge= item.badge
+
+    .product-card-body
+      if item.category
+        p.product-card-category= item.category
+
+      h2.product-card-title= item.name
+
+      if item.description
+        p.product-card-description= item.description
+
+      .product-card-footer
+        if hasPrice
+          p.product-card-price= item.price.toLocaleString("en-US", { style: "currency", currency: "USD" })
+        else
+          p.product-card-price(aria-label="Price not available") —
+
+        button.product-card-add(
+          type="button"
+          disabled
+          aria-label="Add " + item.name + " to cart"
+        ) Add +

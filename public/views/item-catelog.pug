@@ -1,4 +1,77 @@
 extends layout
 
+include partials/product-card.pug
+
 block content
-    h1 item catelog 
+  section.catalog-graphic(aria-label="Catalog graphic placeholder")
+    img(
+      src="/images/item-catalog-image.png"
+      alt="History Showroom logo featuring George Washington as a historical relic dealer"
+    )
+
+  section.catalog-page(aria-labelledby="catalog-heading")
+    h1#catalog-heading.catalog-title Item Catalog
+
+    .catalog-layout
+      aside.catalog-filters(aria-labelledby="catalog-filters-heading")
+        h2#catalog-filters-heading Filters
+
+        form.catalog-filter-form(action="/shop" method="get" role="search" aria-label="Filter catalog")
+          .catalog-filter-group
+            label(for="catalog-name") Product name
+            input#catalog-name(
+              type="search"
+              name="q"
+              placeholder="Search by name"
+            )
+
+          fieldset.catalog-filter-group
+            legend Price
+            .catalog-price-range
+              div
+                label(for="catalog-min-price") Min ($)
+                input#catalog-min-price(
+                  type="number"
+                  name="minPrice"
+                  min="0"
+                  step="0.01"
+                  inputmode="decimal"
+                  placeholder="0.00"
+                )
+
+              div
+                label(for="catalog-max-price") Max ($)
+                input#catalog-max-price(
+                  type="number"
+                  name="maxPrice"
+                  min="0"
+                  step="0.01"
+                  inputmode="decimal"
+                  placeholder="No limit"
+                )
+
+          .catalog-filter-group
+            label(for="catalog-time-period") Time period
+            select#catalog-time-period(name="timePeriod")
+              option(value="") All time periods
+              each period in timePeriods
+                option(value=period)= period
+
+          .catalog-filter-group
+            label(for="catalog-category") Category
+            select#catalog-category(name="category")
+              option(value="") All categories
+              each category in categories
+                option(value=category)= category
+
+          .catalog-filter-actions
+            //- Enable Apply when the controller implements filtering.
+            button.catalog-apply(type="submit" disabled) Apply filters
+            a.catalog-reset(href="/shop") Reset
+
+      section.catalog-results(aria-label="Catalog items")
+        .catalog-grid
+          each item in items
+            +productCard(item)
+          else
+            p.catalog-empty No items are available yet.

@@ -1,0 +1,19 @@
+extends ../profile
+
+block profileContent
+  section.profile-section.profile-panel(
+    aria-labelledby="profile-privacy-heading"
+  )
+    a.profile-back(href="/profile") ← Back to profile
+
+    h2#profile-privacy-heading Privacy
+
+    p.profile-empty Your privacy preferences will appear here.
+
+    p#profile-privacy-note.profile-muted Privacy controls are not available yet.
+
+    button.profile-button(
+      type="button"
+      disabled
+      aria-describedby="profile-privacy-note"
+    ) Manage privacy

@@ -1,3 +1,4 @@
+- const navbarCartCount = typeof cartCount === "number" && Number.isInteger(cartCount) && cartCount >= 0 ? cartCount : 0
 nav.site-navbar(aria-label="Main navigation")
   a.brand(href="/" aria-label="History Showroom home")
     img.logo(src="/images/history-showroom-logo.png" alt="")
@@ -30,8 +31,8 @@ nav.site-navbar(aria-label="Main navigation")
         circle(cx="12" cy="7" r="4")
         path(d="M4 21v-2a8 8 0 0 1 16 0v2")
 
-    a.icon-link.cart-link(href="/cart" aria-label="Shopping cart, 0 items")
+    a.icon-link.cart-link(href="/cart" aria-label="Shopping cart, " + navbarCartCount + (navbarCartCount === 1 ? " item" : " items"))
       svg.icon(viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false")
         path(d="M6 7h12l1 14H5L6 7Z")
         path(d="M9 7V5a3 3 0 0 1 6 0v2")
-      span.cart-count(aria-hidden="true") 0
+      span.cart-count(aria-hidden="true")= navbarCartCount

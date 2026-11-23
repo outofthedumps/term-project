@@ -1,4 +1,132 @@
 extends layout
 
 block content
-    h1 profile
+  .profile-page
+    .profile-shell
+      .profile-main
+        header.profile-identity
+          img.profile-avatar(
+            src=profileUser.avatarUrl
+            alt=profileUser.avatarAlt
+            width="104"
+            height="104"
+          )
+
+          .profile-user-details
+            p.profile-eyebrow Your account
+            h1.profile-name= profileUser.username || "Your profile"
+
+            p.profile-joined
+              if profileUser.joinedAt
+                | Joined
+                time(datetime=profileUser.joinedAt.iso)= profileUser.joinedAt.label
+              else
+                | Join date will appear here.
+
+        .profile-content
+          block profileContent
+            section.profile-section(
+              aria-labelledby="profile-orders-heading"
+            )
+              .profile-section-heading
+                h2#profile-orders-heading Order history
+
+                if recentOrders.length
+                  span.profile-meta Most recent first
+
+              if recentOrders.length
+                ul.profile-list
+                  each order in recentOrders
+                    li.profile-order
+                      .profile-order-heading
+                        h3.profile-order-title= order.number
+
+                        if order.placedAt
+                          time.profile-meta(
+                            datetime=order.placedAt.iso
+                          )= order.placedAt.label
+
+                      if order.items.length
+                        ul.profile-order-items
+                          each item in order.items
+                            li
+                              | #{item.name}
+                              if item.quantity
+                                |  × #{item.quantity}
+
+                      .profile-row-footer
+                        if order.status
+                          span.profile-status= order.status
+
+                        strong.profile-money Total: #{order.totalLabel}
+
+              else
+                p.profile-empty Your three most recent purchases will appear here.
+
+            section.profile-section(
+              aria-labelledby="profile-cart-heading"
+            )
+              .profile-section-heading
+                h2#profile-cart-heading Shopping cart
+
+                if cartItems.length
+                  span.profile-meta #{cartCount} #{cartCount === 1 ? "item" : "items"}
+
+              if cartItems.length
+                ul.profile-list
+                  each item in cartItems
+                    li.profile-cart-row
+                      .profile-item-details
+                        h3.profile-item-name= item.name
+
+                        p.profile-meta
+                          | Quantity: #{item.quantity || "Unavailable"}
+                          |  · Unit price: #{item.unitPriceLabel}
+
+                      strong.profile-money= item.lineTotalLabel
+
+                .profile-subtotal
+                  span Subtotal
+                  strong.profile-money= cartSubtotalLabel
+
+              else
+                p.profile-empty Your current cart items will appear here.
+
+              a.profile-button(href="/cart") View cart
+
+            section.profile-section.profile-track(
+              aria-labelledby="profile-track-heading"
+            )
+              h2#profile-track-heading Track your order
+
+              p#profile-tracking-note.profile-muted Order tracking is not available yet.
+
+              button.profile-button(
+                type="button"
+                disabled
+                aria-describedby="profile-tracking-note"
+              ) Track order
+
+      aside.profile-sidebar
+        h2.profile-sidebar-heading Account
+
+        nav.profile-account-nav(aria-label="Profile sections")
+          a(
+            href="/profile/privacy"
+            aria-current=activeProfileSection === "privacy" ? "page" : null
+          ) Privacy
+
+          a(
+            href="/profile/security"
+            aria-current=activeProfileSection === "security" ? "page" : null
+          ) Security
+
+          a(
+            href="/profile/settings"
+            aria-current=activeProfileSection === "settings" ? "page" : null
+          ) Settings
+
+          a(
+            href="/profile/saved-cards"
+            aria-current=activeProfileSection === "saved-cards" ? "page" : null
+          ) Saved cards

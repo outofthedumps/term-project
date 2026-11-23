@@ -1,4 +1,96 @@
+
 extends layout
 
 block content
-    h1 This is the cart
+  section.cart-page
+    .cart-container
+      h1.cart-heading Your Cart
+
+      .cart-layout
+
+        //- Left side: cart items
+        section.cart-items(aria-labelledby="cart-items-heading")
+          h2#cart-items-heading Cart Items
+
+          if cartItems.length
+            each item in cartItems
+              article.cart-item
+                .cart-item-image
+                  if item.imageUrl
+                    img(
+                      src=item.imageUrl
+                      alt=item.name
+                    )
+                  else
+                    span No image yet
+
+                .cart-item-details
+                  h3= item.name
+
+                  if item.description
+                    p= item.description
+
+                  p Quantity: #{item.quantity}
+
+                .cart-item-price
+                  strong= item.lineTotalLabel
+
+          else
+            .cart-empty
+              h3 Nothing in your cart.
+              p Apparently, you're not ready to own a piece of history.
+              a(href="/shop") Browse relics
+
+        //- Right side: checkout panel
+        aside.cart-checkout
+          h2 Checkout
+
+          .checkout-summary
+            p Items: #{cartCount}
+
+            .checkout-total
+              span Subtotal
+              strong= subtotalLabel
+
+          form.checkout-form
+            .checkout-field
+              label(for="checkout-name") Full name
+              input#checkout-name(
+                type="text"
+                name="fullName"
+                placeholder="Your name"
+                disabled
+              )
+
+            .checkout-field
+              label(for="checkout-card") Card information
+              input#checkout-card(
+                type="text"
+                placeholder="Payment integration coming soon"
+                disabled
+              )
+
+            .checkout-field
+              label(for="checkout-address") Shipping address
+              textarea#checkout-address(
+                name="address"
+                placeholder="Shipping address"
+                rows="3"
+                disabled
+              )
+
+            .checkout-terms
+              input#checkout-tos(
+                type="checkbox"
+                name="acceptTerms"
+                disabled
+              )
+              label(for="checkout-tos") I accept the Terms of Service
+
+            button.checkout-button(
+              type="button"
+              disabled
+            ) Purchase
+
+          p.checkout-notice Checkout is not available yet.
+

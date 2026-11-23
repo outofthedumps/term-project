@@ -1,4 +1,74 @@
 extends layout
 
 block content
-    h1 faq
+  section.faq-page
+    .faq-layout
+      figure.faq-graphic
+        img.faq-image(
+          src="/images/faq-image.png"
+          alt="Abraham Lincoln wearing a customer support headset, with the caption: Let's keep this civil."
+          width="887"
+          height="1774"
+        )
+
+      section.faq-content(aria-labelledby="faq-heading")
+        header.faq-header
+          h1#faq-heading Frequently Asked Questions
+          
+
+        .faq-list
+          details.faq-item
+            summary.faq-question
+              span Are these actual historical artifacts?
+              span.faq-toggle(aria-hidden="true")
+            .faq-answer
+              p No. History Showroom is a parody shop with fictional relic listings. The Smithsonian can relax.
+
+          details.faq-item
+            summary.faq-question
+              span Why is the Liberty Bell already broken?
+              span.faq-toggle(aria-hidden="true")
+            .faq-answer
+              p You're looking at the premium feature. An intact one would raise more questions.
+
+          details.faq-item
+            summary.faq-question
+              span Who authenticates the relics?
+              span.faq-toggle(aria-hidden="true")
+            .faq-answer
+              p Our expert checks every item against the certificate he just wrote. We consider this a very efficient system.
+
+          details.faq-item
+            summary.faq-question
+              span Can I pay with Confederate money?
+              span.faq-toggle(aria-hidden="true")
+            .faq-answer
+              p We accept that you tried.
+
+          details.faq-item
+            summary.faq-question
+              span What if my relic is haunted?
+              span.faq-toggle(aria-hidden="true")
+            .faq-answer
+              p Ask the original owner for a receipt. If they start talking about tariffs, set aside the afternoon.
+
+          details.faq-item
+            summary.faq-question
+              span How accurate are the product descriptions?
+              span.faq-toggle(aria-hidden="true")
+            .faq-answer
+              p Every item has a story. Some even had one before we wrote the listing.
+
+          details.faq-item
+            summary.faq-question
+              span Can I speak to the manager?
+              span.faq-toggle(aria-hidden="true")
+            .faq-answer
+              p Mr. Lincoln is currently trying to keep the team together.
+
+          details.faq-item
+            summary.faq-question
+              span Can I use this website for my history class?
+              span.faq-toggle(aria-hidden="true")
+            .faq-answer
+              p If the assignment is about unreliable sources, we're an excellent case study.

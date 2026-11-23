@@ -1,0 +1,19 @@
+extends ../profile
+
+block profileContent
+  section.profile-section.profile-panel(
+    aria-labelledby="profile-security-heading"
+  )
+    a.profile-back(href="/profile") ← Back to profile
+
+    h2#profile-security-heading Security
+
+    p.profile-empty Your account security options will appear here.
+
+    p#profile-security-note.profile-muted Password changes are not available yet.
+
+    button.profile-button(
+      type="button"
+      disabled
+      aria-describedby="profile-security-note"
+    ) Change password
