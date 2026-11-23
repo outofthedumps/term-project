@@ -1,4 +1,6 @@
-
+:root{
+    --site-yellow: #eebf07;
+}
 
 .logo{
     width: 50px;
@@ -77,12 +79,21 @@
 /* home page */
 .featured-items{
     display: flex;
+    justify-content: space-between;
 
 }
 
 .home-graphic{
-    width: 30px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--site-yellow);
+    background-image: url("/images/pulp-grain.svg");
+}  
+
+.home-graphic img{
+    width: 400px;
     height: auto;
+    min-width: none;
 }
 
 

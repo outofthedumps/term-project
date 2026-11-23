@@ -12,12 +12,16 @@ block content
           ];
 
   section.home-graphic(aria-label="History Showroom graphic")
+    
     img(
       src="/images/Washington-home-graphic.png"
       alt="History Showroom logo featuring George Washington as a historical relic dealer"
     )
-
+  section.featured-header(aria-label="Featured header")
+    
+    h1 Featured Relics
   section.featured-items(aria-label="Featured items")
+    
     each item in itemsToShow
       article.featured-item
         h2= item.name
